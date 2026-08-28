@@ -14,6 +14,8 @@ import {
   SHOP_PHONE,
 } from "@/config/site-config";
 
+import ServiceWorkerRegistrar from "@/components/ServiceWorkerRegistrar";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -47,6 +49,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#241712" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Sadguru Chai" />
+        <link rel="apple-touch-icon" href="/images/logo.png" />
+      </head>
       <body>
         <CartProvider>
           <Header />
@@ -56,6 +66,7 @@ export default function RootLayout({
           <Footer />
           <CartSummaryBar />
           <FloatingWhatsAppButton />
+          <ServiceWorkerRegistrar />
         </CartProvider>
       </body>
     </html>
