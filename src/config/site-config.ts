@@ -5,7 +5,7 @@
  */
 
 // ─── Shop Identity ────────────────────────────────────────────────────────────
-export const SHOP_NAME = "Sadguru Chai & Nasta Centre";
+export const SHOP_NAME = "Shree Sadguru Chai & Nasta Center";
 export const SHOP_TAGLINE = "Pune's favourite chai, made with heart.";
 export const SHOP_WHATSAPP_NUMBER = "919XXXXXXXXX"; // Replace with real number: country code + number, no +
 export const SHOP_PHONE = "+91 9XXXXXXXXX";          // Replace with real phone

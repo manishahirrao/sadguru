@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { SHOP_NAME } from "@/config/site-config";
 import { useCart } from "@/lib/cart-context";
@@ -24,8 +25,16 @@ export default function Header() {
     <header className="sticky top-0 z-40 bg-[#241712]/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         {/* Logo / Shop name */}
-        <Link href="/" className="flex items-center gap-2">
-          <span className="font-display text-xl font-bold tracking-tight text-[#F3E7D3]">
+        <Link href="/" className="flex items-center gap-2.5">
+          <Image
+            src="/images/logo.png"
+            alt={SHOP_NAME}
+            width={40}
+            height={40}
+            className="h-10 w-10 rounded-full object-cover"
+            priority
+          />
+          <span className="font-display text-lg font-bold tracking-tight text-[#F3E7D3] leading-tight hidden sm:block">
             {SHOP_NAME}
           </span>
         </Link>
