@@ -1,0 +1,119 @@
+[
+  {
+    "id": "poha",
+    "name": "Poha",
+    "category": "nasta",
+    "price": 40,
+    "veg": true,
+    "image": "/images/poha.webp",
+    "description": "Light, fluffy flattened rice with mustard seeds, turmeric, onion & fresh coriander",
+    "available": true,
+    "orderable": true,
+    "deliveryEligible": true,
+    "variants": [
+      { "label": "Regular", "priceDelta": 0 },
+      { "label": "With Sev", "priceDelta": 5 }
+    ]
+  },
+  {
+    "id": "maggi",
+    "name": "Maggi",
+    "category": "nasta",
+    "price": 50,
+    "veg": true,
+    "image": "/images/maggi.webp",
+    "description": "Classic two-minute noodles made to order — your choice of style",
+    "available": true,
+    "orderable": true,
+    "deliveryEligible": true,
+    "variants": [
+      { "label": "Plain", "priceDelta": 0 },
+      { "label": "Masala", "priceDelta": 10 },
+      { "label": "Cheese", "priceDelta": 20 }
+    ]
+  },
+  {
+    "id": "bhurji-pav",
+    "name": "Bhurji Pav",
+    "category": "nasta",
+    "price": 55,
+    "veg": true,
+    "image": "/images/bhurji-pav.webp",
+    "description": "Spiced scrambled eggs (or paneer) with pav — a Mumbai street classic",
+    "available": true,
+    "orderable": true,
+    "deliveryEligible": true,
+    "variants": []
+  },
+  {
+    "id": "misal-pav",
+    "name": "Misal Pav",
+    "category": "nasta",
+    "price": 60,
+    "veg": true,
+    "image": "/images/misal-pav.webp",
+    "description": "Spicy sprouted-lentil curry with pav, farsan & onion — Pune's own",
+    "available": true,
+    "orderable": true,
+    "deliveryEligible": true,
+    "variants": [
+      { "label": "Regular", "priceDelta": 0 },
+      { "label": "Extra Farsan", "priceDelta": 10 }
+    ]
+  },
+  {
+    "id": "cutting-chai",
+    "name": "Cutting Chai",
+    "category": "beverages",
+    "price": 12,
+    "veg": true,
+    "image": "/images/cutting-chai.webp",
+    "description": "Strong, sweet half-glass tea — the way Pune runs on it",
+    "available": true,
+    "orderable": true,
+    "deliveryEligible": true,
+    "variants": []
+  },
+  {
+    "id": "masala-chai",
+    "name": "Masala Chai",
+    "category": "beverages",
+    "price": 18,
+    "veg": true,
+    "image": "/images/masala-chai.webp",
+    "description": "Full glass of chai brewed with ginger, cardamom, and our house spice blend",
+    "available": true,
+    "orderable": true,
+    "deliveryEligible": true,
+    "variants": []
+  },
+  {
+    "id": "coffee",
+    "name": "Coffee",
+    "category": "beverages",
+    "price": 20,
+    "veg": true,
+    "image": "/images/coffee.webp",
+    "description": "Hot instant coffee — simple and satisfying",
+    "available": true,
+    "orderable": true,
+    "deliveryEligible": true,
+    "variants": [
+      { "label": "Regular", "priceDelta": 0 },
+      { "label": "Strong", "priceDelta": 0 }
+    ]
+  },
+  {
+    "id": "cigarettes",
+    "name": "Cigarettes",
+    "category": "other",
+    "price": 15,
+    "veg": true,
+    "image": "/images/cigarettes.webp",
+    "description": "Available in-store only. Select brands & pack sizes. Ask at the counter.",
+    "available": true,
+    "orderable": false,
+    "deliveryEligible": false,
+    "variants": []
+  }
+]
