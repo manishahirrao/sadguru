@@ -104,7 +104,7 @@ export default function ProductCard({ item }: ProductCardProps) {
       {/* Info */}
       <div className="flex items-start justify-between gap-2">
         <h3 className="font-medium text-[#241712]">{item.name}</h3>
-        <span className="font-mono text-sm font-semibold text-[#D9A441]">
+        <span className="font-mono text-sm font-bold text-[#241712]">
           {item.price === 0 ? <span className="text-xs font-normal italic text-[#241712]/50">Price varies</span> : `₹${effectivePrice}`}
         </span>
       </div>

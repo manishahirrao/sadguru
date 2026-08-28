@@ -17,7 +17,7 @@ export const SHOP_MAP_EMBED_URL =
 export const SHOP_LAT = 18.463565;
 export const SHOP_LNG = 73.836764;
 export const DELIVERY_RADIUS_KM = 5;
-export const SHOP_INSTAGRAM = "https://instagram.com/sadgurucafe"; // Replace
+export const SHOP_INSTAGRAM = "https://www.instagram.com/shrisadguruchaha.centre?igsi=MXc3NXZ4ZDZyMHZ3OA==";
 export const SHOP_FACEBOOK = "";                     // Leave empty if not applicable
 
 // ─── Business Hours ───────────────────────────────────────────────────────────

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 // Gallery images — replace with real food photos in /public/images/
 const galleryImages = [
   { src: "/images/misal-pav.jpg", alt: "Misal Pav — spicy lentil curry with pav" },
-  { src: "/images/chai.jpg", alt: "Cutting chai — strong sweet tea" },
+  { src: "/images/chai.jpg", alt: "Special Gulacha Chaha — jaggery tea" },
   { src: "/images/poha.jpg", alt: "Poha — flattened rice breakfast" },
   { src: "/images/maggi.jpg", alt: "Maggi noodles made to order" },
 ];
@@ -136,7 +136,7 @@ export default function HomePage() {
 
           {/* Highlight chips */}
           <div className="mt-6 flex flex-wrap justify-center gap-2">
-            {["🍛 Misal Pav", "🍜 Maggi", "🍚 Poha", "☕ Cutting Chai", "🥘 Bhurji Pav"].map((item) => (
+            {["🍛 Misal Pav", "🍜 Maggi", "🍚 Poha", "☕ Special Gulacha Chaha", "🥘 Bhurji Pav"].map((item) => (
               <span
                 key={item}
                 className="rounded-full bg-[#F3E7D3]/10 px-3 py-1 text-xs text-[#F3E7D3]/70 backdrop-blur-sm"
