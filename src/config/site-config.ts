@@ -7,19 +7,27 @@
 // ─── Shop Identity ────────────────────────────────────────────────────────────
 export const SHOP_NAME = "Shree Sadguru Chai & Nasta Center";
 export const SHOP_TAGLINE = "Pune's favourite chai, made with heart.";
-export const SHOP_WHATSAPP_NUMBER = "919XXXXXXXXX"; // Replace with real number: country code + number, no +
-export const SHOP_PHONE = "+91 9XXXXXXXXX";          // Replace with real phone
-export const SHOP_ADDRESS = "Near [Landmark], [Area], Pune, Maharashtra";
+export const SHOP_WHATSAPP_NUMBER = "919022217637"; // country code 91 + number
+export const SHOP_PHONE = "+91 90222 17637";
+export const SHOP_ADDRESS = "Malhar Srushti, S.N. 10/7/5, Opp. Sinhgad Law College, Ambegaon Budruk, Pune, Maharashtra 411046";
 export const SHOP_MAP_EMBED_URL =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!..."; // Replace with real embed URL from Google Maps
+  "https://maps.google.com/maps?q=18.463565,73.836764&z=16&output=embed";
+
+// Exact shop GPS coordinates (Malhar Srushti, Ambegaon Budruk)
+export const SHOP_LAT = 18.463565;
+export const SHOP_LNG = 73.836764;
+export const DELIVERY_RADIUS_KM = 5;
 export const SHOP_INSTAGRAM = "https://instagram.com/sadgurucafe"; // Replace
 export const SHOP_FACEBOOK = "";                     // Leave empty if not applicable
 
 // ─── Business Hours ───────────────────────────────────────────────────────────
 export const SHOP_HOURS = [
-  { day: "Monday – Saturday", open: "07:00", close: "22:00" },
-  { day: "Sunday", open: "08:00", close: "21:00" },
+  { day: "In-store", open: "Open 24 hours", close: "" },
+  { day: "Online Delivery", open: "10:00 PM – 4:00 AM", close: "" },
 ];
+
+export const ONLINE_DELIVERY_START_HOUR = 22; // 10 PM
+export const ONLINE_DELIVERY_END_HOUR = 4;    // 4 AM
 
 // ─── Delivery Constants (true source of truth is lib/delivery.ts) ─────────────
 // These re-exports let a non-developer find everything in this one file.
@@ -33,7 +41,7 @@ export {
 
 // ─── Delivery Area ────────────────────────────────────────────────────────────
 export const DELIVERY_AREA_DISCLAIMER =
-  "Delivery available within 3 km of the shop. Confirm with us on WhatsApp before ordering from outside this range.";
+  "Free delivery on orders above ₹150. ₹20 charge below ₹150. Delivery within 5 km of our shop in Ambegaon Budruk, Pune.";
 
 // ─── SEO / Meta ───────────────────────────────────────────────────────────────
 export const SITE_URL = "https://sadgurucafe.in"; // Replace with real domain

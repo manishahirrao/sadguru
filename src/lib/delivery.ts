@@ -6,7 +6,7 @@
  */
 
 /** Order subtotal at or above this gets free delivery (inclusive). */
-export const DELIVERY_THRESHOLD = 100; // ₹
+export const DELIVERY_THRESHOLD = 150; // ₹
 
 /** Delivery charge applied when subtotal is below DELIVERY_THRESHOLD. */
 export const DELIVERY_CHARGE = 20; // ₹

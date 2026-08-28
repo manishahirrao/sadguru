@@ -3,8 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { SHOP_NAME } from "@/config/site-config";
+import { SHOP_NAME, DELIVERY_RADIUS_KM } from "@/config/site-config";
 import { useCart } from "@/lib/cart-context";
+import { useDeliveryZone } from "@/lib/use-delivery-zone";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -17,12 +18,16 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { itemCount } = useCart();
+  const { status, distanceKm, check } = useDeliveryZone();
 
   useEffect(() => setMounted(true), []);
   const displayCount = mounted ? itemCount : 0;
 
   return (
     <header className="sticky top-0 z-40 bg-[#241712]/95 backdrop-blur-sm">
+      {/* ── Location awareness bar (auto-checks on mount) ───────────────── */}
+      <LocationBar status={status} distanceKm={distanceKm} check={check} mounted={mounted} />
+
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         {/* Logo / Shop name */}
         <Link href="/" className="flex items-center gap-2.5">
@@ -52,7 +57,7 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Cart icon (desktop) */}
+        {/* Cart + order button (desktop) */}
         <Link
           href="/menu"
           className="relative hidden items-center gap-1 rounded-full bg-[#C15B2C] px-4 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441] md:flex"
@@ -78,7 +83,7 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile menu drawer */}
+      {/* Mobile menu */}
       {menuOpen && (
         <nav
           className="border-t border-[#F3E7D3]/10 bg-[#241712] px-4 pb-4 pt-2 md:hidden"
@@ -98,6 +103,60 @@ export default function Header() {
       )}
     </header>
   );
+}
+
+// ── Location awareness bar ────────────────────────────────────────────────────
+type LocationBarProps = {
+  status: ReturnType<typeof useDeliveryZone>["status"];
+  distanceKm: number | null;
+  check: () => void;
+  mounted: boolean;
+};
+
+function LocationBar({ status, distanceKm, check, mounted }: LocationBarProps) {
+  // Auto-trigger check on first mount (silent — no UI until we have a result)
+  useEffect(() => {
+    if (mounted && status === "idle") check();
+  }, [mounted, status, check]);
+
+  // Don't render anything until mounted (avoids SSR mismatch)
+  if (!mounted) return null;
+
+  // Idle or checking — show a subtle "detecting" pill
+  if (status === "idle" || status === "checking") {
+    return (
+      <div className="flex items-center justify-center gap-1.5 bg-[#241712] px-4 py-1 text-xs text-[#F3E7D3]/40">
+        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#F3E7D3]/30" />
+        Detecting your location…
+      </div>
+    );
+  }
+
+  // In range — green confirmation
+  if (status === "in-range") {
+    return (
+      <div className="flex items-center justify-center gap-1.5 bg-green-900/40 px-4 py-1 text-xs text-green-300">
+        <span>📍</span>
+        <span>Delivery available in your area ({distanceKm} km away)</span>
+      </div>
+    );
+  }
+
+  // Out of range — amber warning, non-blocking (they can still browse & order; owner handles on WhatsApp)
+  if (status === "out-of-range") {
+    return (
+      <div className="flex items-center justify-center gap-1.5 bg-amber-900/40 px-4 py-1 text-xs text-amber-300">
+        <span>📍</span>
+        <span>
+          You&apos;re {distanceKm} km away — outside our {DELIVERY_RADIUS_KM} km delivery zone.
+          You can still order; we&apos;ll confirm on WhatsApp.
+        </span>
+      </div>
+    );
+  }
+
+  // Denied / error — silent, don't bother the user
+  return null;
 }
 
 function CartIcon() {

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import SteamWisp from "@/components/SteamWisp";
 import ScrollReveal from "@/components/ScrollReveal";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import MapEmbed from "@/components/MapEmbed";
@@ -15,10 +14,10 @@ export const metadata: Metadata = {
 
 // Gallery images — replace with real food photos in /public/images/
 const galleryImages = [
-  { src: "/images/misal-pav.webp", alt: "Misal Pav — spicy lentil curry with pav" },
-  { src: "/images/cutting-chai.webp", alt: "Cutting chai — strong sweet tea" },
-  { src: "/images/poha.webp", alt: "Poha — flattened rice breakfast" },
-  { src: "/images/maggi.webp", alt: "Maggi noodles made to order" },
+  { src: "/images/misal-pav.jpg", alt: "Misal Pav — spicy lentil curry with pav" },
+  { src: "/images/chai.jpg", alt: "Cutting chai — strong sweet tea" },
+  { src: "/images/poha.jpg", alt: "Poha — flattened rice breakfast" },
+  { src: "/images/maggi.jpg", alt: "Maggi noodles made to order" },
 ];
 
 // LocalBusiness JSON-LD structured data
@@ -70,7 +69,7 @@ export default function HomePage() {
 
           {/* Establishment badge */}
           <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-[#D9A441]/40 bg-[#D9A441]/10 px-4 py-1 text-xs font-medium tracking-widest text-[#D9A441] uppercase">
-            ✦ Since 2005 · Pune
+            ✦ Since 2025 · Pune
           </span>
 
           {/* Staggered shop name */}
@@ -88,11 +87,6 @@ export default function HomePage() {
               </span>
             ))}
           </h1>
-
-          {/* Steam wisp */}
-          <div className="my-5">
-            <SteamWisp mode="animate" color="#D9A441" />
-          </div>
 
           {/* Tagline */}
           <p className="max-w-lg text-lg leading-relaxed text-[#F3E7D3]/85">
@@ -112,7 +106,7 @@ export default function HomePage() {
               See Our Menu →
             </Link>
             <a
-              href={`https://wa.me/919XXXXXXXXX?text=${encodeURIComponent("Hi Shree Sadguru Chai & Nasta Center! I'd like to place an order.")}`}
+              href={`https://wa.me/919022217637?text=${encodeURIComponent("Hi Shree Sadguru Chai & Nasta Center! I'd like to place an order.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-[#25D366] bg-transparent px-6 py-3.5 text-base font-semibold text-[#25D366] transition-colors hover:bg-[#25D366] hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/50"
@@ -131,7 +125,7 @@ export default function HomePage() {
             <span className="hidden sm:block text-[#F3E7D3]/20">|</span>
             <span className="flex items-center gap-1.5">
               <ClockIcon />
-              {SHOP_HOURS[0].open} – {SHOP_HOURS[0].close} daily
+              In-store: Open 24hrs · Delivery: 10 PM – 4 AM
             </span>
             <span className="hidden sm:block text-[#F3E7D3]/20">|</span>
             <span className="flex items-center gap-1.5">
@@ -179,11 +173,6 @@ export default function HomePage() {
           </p>
         </section>
       </ScrollReveal>
-
-      {/* Steam divider */}
-      <div className="flex justify-center py-2" aria-hidden="true">
-        <SteamWisp mode="static" color="#D9A441" />
-      </div>
 
       {/* ── Menu highlights ─────────────────────────────────────────────── */}
       <ScrollReveal>

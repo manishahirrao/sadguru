@@ -45,10 +45,10 @@ export default function ProductCard({ item }: ProductCardProps) {
     window.open(buildWhatsAppLink(msg), "_blank", "noopener,noreferrer");
   }
 
-  // ── Display-only card (tobacco compliance) ─────────────────────────────────
+  // ── Display-only card (tobacco) ───────────────────────────────────────────
   if (!item.orderable) {
     return (
-      <article className="rounded-xl border border-[#C15B2C]/20 bg-[#F7EFDD] p-4">
+      <article className="rounded-xl border border-[#241712]/10 bg-[#F7EFDD] p-4">
         <div className="relative mb-3 aspect-[4/3] w-full overflow-hidden rounded-lg bg-[#e8dcc8]">
           <Image
             src={item.image}
@@ -60,21 +60,10 @@ export default function ProductCard({ item }: ProductCardProps) {
         </div>
         <div className="flex items-start justify-between gap-2">
           <h3 className="font-medium text-[#241712]">{item.name}</h3>
-          <span className="font-mono text-sm font-semibold text-[#241712]">
-            ₹{item.price}
-          </span>
+          <span className="text-xs text-[#241712]/50 italic">Price varies</span>
         </div>
         <p className="mt-1 text-sm text-[#241712]/60">{item.description}</p>
-        {/* Compliance disclaimer chip */}
-        <div className="mt-3 inline-flex items-center gap-1.5 rounded border border-red-400 px-2 py-1 text-xs font-medium text-red-600">
-          <span>18+</span>
-          <span>·</span>
-          <span>In-store only</span>
-        </div>
-        <p className="mt-2 text-xs text-[#241712]/50">
-          Sale of tobacco products to persons under 18 is prohibited by law. Available
-          for in-store purchase only — no online sale or home delivery.
-        </p>
+        <p className="mt-2 text-xs text-[#241712]/40">Available in-store only</p>
       </article>
     );
   }
@@ -116,7 +105,7 @@ export default function ProductCard({ item }: ProductCardProps) {
       <div className="flex items-start justify-between gap-2">
         <h3 className="font-medium text-[#241712]">{item.name}</h3>
         <span className="font-mono text-sm font-semibold text-[#D9A441]">
-          ₹{effectivePrice}
+          {item.price === 0 ? <span className="text-xs font-normal italic text-[#241712]/50">Price varies</span> : `₹${effectivePrice}`}
         </span>
       </div>
       <p className="mt-1 line-clamp-2 text-sm text-[#241712]/60">{item.description}</p>
@@ -160,27 +149,43 @@ export default function ProductCard({ item }: ProductCardProps) {
 
       {/* Action buttons */}
       <div className="mt-4 flex gap-2">
-        <button
-          type="button"
-          onClick={handleAddToCart}
-          disabled={!canOrder}
-          aria-disabled={!canOrder}
-          className="flex-1 rounded-lg bg-[#C15B2C] px-3 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C15B2C]"
-        >
-          {!item.available ? "Sold out" : hasVariants && !selectedVariant ? "Pick a variant" : "Add to order"}
-        </button>
-
-        <button
-          type="button"
-          onClick={handleQuickOrder}
-          disabled={!canOrder}
-          aria-disabled={!canOrder}
-          title="Order this item directly on WhatsApp"
-          className="flex h-11 w-11 items-center justify-center rounded-lg border border-[#25D366] text-[#25D366] transition-colors hover:bg-[#25D366] hover:text-white disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]"
-          aria-label={`Order ${item.name} on WhatsApp`}
-        >
-          <WAIcon />
-        </button>
+        {/* WhatsApp-only items (price === 0): skip cart, go straight to WhatsApp */}
+        {item.price === 0 ? (
+          <button
+            type="button"
+            onClick={handleQuickOrder}
+            disabled={!item.available}
+            aria-disabled={!item.available}
+            className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-[#25D366] py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]"
+            aria-label={`Order ${item.name} on WhatsApp`}
+          >
+            <WAIcon />
+            Order on WhatsApp
+          </button>
+        ) : (
+          <>
+            <button
+              type="button"
+              onClick={handleAddToCart}
+              disabled={!canOrder}
+              aria-disabled={!canOrder}
+              className="flex-1 rounded-lg bg-[#C15B2C] px-3 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C15B2C]"
+            >
+              {!item.available ? "Sold out" : hasVariants && !selectedVariant ? "Pick a variant" : "Add to order"}
+            </button>
+            <button
+              type="button"
+              onClick={handleQuickOrder}
+              disabled={!canOrder}
+              aria-disabled={!canOrder}
+              title="Order this item directly on WhatsApp"
+              className="flex h-11 w-11 items-center justify-center rounded-lg border border-[#25D366] text-[#25D366] transition-colors hover:bg-[#25D366] hover:text-white disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]"
+              aria-label={`Order ${item.name} on WhatsApp`}
+            >
+              <WAIcon />
+            </button>
+          </>
+        )}
       </div>
     </article>
   );

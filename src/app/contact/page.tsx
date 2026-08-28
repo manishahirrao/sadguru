@@ -64,15 +64,18 @@ export default function ContactPage() {
             <div>
               <h2 className="font-semibold text-[#241712]">Hours</h2>
               <ul className="mt-2 space-y-1">
-                {SHOP_HOURS.map((h) => (
-                  <li key={h.day} className="flex justify-between text-sm">
-                    <span className="text-[#241712]/70">{h.day}</span>
-                    <span className="font-medium text-[#C15B2C]">
-                      {h.open} – {h.close}
-                    </span>
-                  </li>
-                ))}
+                <li className="flex justify-between text-sm">
+                  <span className="text-[#241712]/70">🏪 In-store</span>
+                  <span className="font-medium text-[#C15B2C]">Open 24 hours</span>
+                </li>
+                <li className="flex justify-between text-sm">
+                  <span className="text-[#241712]/70">🛵 Online Delivery</span>
+                  <span className="font-medium text-[#C15B2C]">10:00 PM – 4:00 AM</span>
+                </li>
               </ul>
+              <p className="mt-2 rounded-md bg-[#C15B2C]/10 px-2 py-1.5 text-xs text-[#C15B2C]">
+                Outside delivery hours? Visit us in-store — always open!
+              </p>
             </div>
 
             {/* Social links */}

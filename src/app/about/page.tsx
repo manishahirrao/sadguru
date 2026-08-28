@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
 import MapEmbed from "@/components/MapEmbed";
-import SteamWisp from "@/components/SteamWisp";
 import {
   SHOP_NAME,
   SHOP_ADDRESS,
@@ -37,25 +36,24 @@ export default function AboutPage() {
         </section>
       </ScrollReveal>
 
-      <div className="my-10 flex justify-center" aria-hidden="true">
-        <SteamWisp mode="static" color="#D9A441" />
-      </div>
-
       {/* Hours + Contact */}
       <ScrollReveal>
         <section className="grid gap-8 sm:grid-cols-2">
           <div>
             <h2 className="font-display text-xl font-semibold text-[#241712]">Hours</h2>
             <ul className="mt-4 space-y-2">
-              {SHOP_HOURS.map((h) => (
-                <li key={h.day} className="flex justify-between text-sm">
-                  <span className="text-[#241712]/70">{h.day}</span>
-                  <span className="font-medium text-[#C15B2C]">
-                    {h.open} – {h.close}
-                  </span>
-                </li>
-              ))}
+              <li className="flex justify-between text-sm">
+                <span className="text-[#241712]/70">🏪 In-store</span>
+                <span className="font-medium text-[#C15B2C]">Open 24 hours</span>
+              </li>
+              <li className="flex justify-between text-sm">
+                <span className="text-[#241712]/70">🛵 Online Delivery</span>
+                <span className="font-medium text-[#C15B2C]">10:00 PM – 4:00 AM</span>
+              </li>
             </ul>
+            <p className="mt-3 rounded-md bg-[#C15B2C]/10 px-3 py-2 text-xs text-[#C15B2C]">
+              Outside delivery hours? Visit us in-store — we&apos;re always open!
+            </p>
           </div>
           <div>
             <h2 className="font-display text-xl font-semibold text-[#241712]">Contact</h2>
