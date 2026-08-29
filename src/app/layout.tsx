@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingWhatsAppButton from "@/components/FloatingWhatsAppButton";
 import CartSummaryBar from "@/components/CartSummaryBar";
+import ServiceWorkerRegistrar from "@/components/ServiceWorkerRegistrar";
 import { CartProvider } from "@/lib/cart-context";
 import {
   SHOP_NAME,
@@ -11,10 +12,7 @@ import {
   SITE_URL,
   OG_IMAGE,
   SHOP_ADDRESS,
-  SHOP_PHONE,
 } from "@/config/site-config";
-
-import ServiceWorkerRegistrar from "@/components/ServiceWorkerRegistrar";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

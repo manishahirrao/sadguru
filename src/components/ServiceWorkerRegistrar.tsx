@@ -2,13 +2,16 @@
 
 import { useEffect } from "react";
 
+/**
+ * Registers the service worker for PWA / "Add to Home Screen" support.
+ * Runs once on mount, client-side only.
+ */
 export default function ServiceWorkerRegistrar() {
   useEffect(() => {
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/sw.js")
-        .then(() => console.log("SW registered"))
-        .catch(() => {}); // silent fail — SW is enhancement only
+        .catch((err) => console.error("SW registration failed:", err));
     }
   }, []);
 

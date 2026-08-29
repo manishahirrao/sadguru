@@ -11,6 +11,7 @@ import {
 } from "@/lib/delivery";
 import { DELIVERY_AREA_DISCLAIMER } from "@/config/site-config";
 import { buildCartOrderLink } from "@/lib/whatsapp";
+import CartAddons from "@/components/CartAddons";
 
 export default function CartSummaryBar() {
   const { items, subtotal, updateQty } = useCart();
@@ -133,6 +134,9 @@ export default function CartSummaryBar() {
                 </li>
               ))}
             </ul>
+
+            {/* Add-ons */}
+            <CartAddons />
 
             {/* Totals + CTA */}
             <div className="border-t border-[#241712]/10 bg-[#F7EFDD] px-5 py-5">

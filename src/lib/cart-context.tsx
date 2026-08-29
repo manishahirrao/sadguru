@@ -19,7 +19,7 @@ import React, {
 import type { MenuItem } from "@/lib/types";
 
 const STORAGE_KEY = "sadguru_cart";
-const CART_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
+const CART_TTL_MS = 6 * 60 * 60 * 1000; // 6 hours
 
 export interface CartItem {
   id: string;            // MenuItem.id + optional variant label

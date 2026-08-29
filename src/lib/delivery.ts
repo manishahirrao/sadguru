@@ -1,39 +1,37 @@
 /**
- * lib/delivery.ts — single source of truth for all delivery constants and logic.
- *
- * To change delivery rules, edit ONLY this file.
- * site-config.ts re-exports these so a non-developer finds them in one place.
+ * lib/delivery.ts — single source of truth for delivery constants and logic.
+ * Flat ₹20 charge on every delivery order. No free delivery threshold.
  */
 
-/** Order subtotal at or above this gets free delivery (inclusive). */
-export const DELIVERY_THRESHOLD = 150; // ₹
-
-/** Delivery charge applied when subtotal is below DELIVERY_THRESHOLD. */
+/** Fixed delivery charge applied to every order. */
 export const DELIVERY_CHARGE = 20; // ₹
 
 /** Minimum order subtotal required to place a delivery order. */
 export const MINIMUM_ORDER_DELIVERY = 50; // ₹
 
 /**
- * Returns the delivery charge for a given subtotal.
- * @param subtotal - Cart subtotal in ₹ (delivery-eligible items only)
+ * Set high so free delivery is never triggered.
+ * Kept for compatibility — not used in UI messaging.
  */
-export function calculateDelivery(subtotal: number): number {
-  return subtotal >= DELIVERY_THRESHOLD ? 0 : DELIVERY_CHARGE;
+export const DELIVERY_THRESHOLD = 99999; // effectively disabled
+
+/**
+ * Always returns ₹20 — flat rate on every order.
+ */
+export function calculateDelivery(_subtotal: number): number {
+  return DELIVERY_CHARGE;
 }
 
 /**
- * Returns true if the subtotal is below the minimum required for delivery.
- * When true, the "Send Order" button should be disabled with an explanatory message.
+ * Returns true if subtotal is below the minimum required for delivery.
  */
 export function isBelowMinimumOrder(subtotal: number): boolean {
   return subtotal < MINIMUM_ORDER_DELIVERY;
 }
 
 /**
- * Returns how many more ₹ are needed to reach free delivery.
- * Returns 0 if already at or above threshold.
+ * Always 0 — free delivery nudge is disabled.
  */
-export function amountToFreeDelivery(subtotal: number): number {
-  return Math.max(0, DELIVERY_THRESHOLD - subtotal);
+export function amountToFreeDelivery(_subtotal: number): number {
+  return 0;
 }

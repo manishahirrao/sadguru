@@ -1,15 +1,18 @@
 /**
  * lib/whatsapp.ts — WhatsApp message builders and deep-link generator.
- *
- * ENCODING NOTE: Always use encodeURIComponent. The ₹ symbol (U+20B9) and
- * newlines must be tested explicitly on Android + iOS WhatsApp before launch,
- * as rendering has historically differed between versions.
- * encodeURIComponent converts \n → %0A and ₹ → %E2%82%B9 correctly.
  */
 
 import { SHOP_WHATSAPP_NUMBER, SHOP_NAME } from "@/config/site-config";
-import { calculateDelivery, DELIVERY_THRESHOLD } from "@/lib/delivery";
+import { calculateDelivery } from "@/lib/delivery";
 import type { CartItem } from "@/lib/cart-context";
+
+/** Standard footer appended to every WhatsApp message */
+const MESSAGE_FOOTER = [
+  ``,
+  `---`,
+  `Online Delivery Hours: 10:00 PM - 4:00 AM only`,
+  `We also have Cigarettes available - mention brand if needed!`,
+].join("\n");
 
 /** Builds the deep link URL for a given pre-composed message text. */
 export function buildWhatsAppLink(message: string): string {
@@ -17,7 +20,7 @@ export function buildWhatsAppLink(message: string): string {
 }
 
 /**
- * Multi-item cart order message (FR-WHATSAPP-003).
+ * Multi-item cart order message.
  * Used by the "Send Order on WhatsApp" button in the cart.
  */
 export function buildCartOrderMessage(
@@ -31,27 +34,23 @@ export function buildCartOrderMessage(
       `${item.qty}x ${item.name}${item.selectedVariant ? ` (${item.selectedVariant})` : ""} - Rs.${item.lineTotal}`
   );
 
-  const deliveryLine =
-    deliveryCharge === 0
-      ? `Delivery: FREE (order >= Rs.${DELIVERY_THRESHOLD})`
-      : `Delivery: Rs.${deliveryCharge}`;
-
   return [
     `Hi ${SHOP_NAME}! I'd like to order:`,
     ...lines,
     ``,
     `Subtotal: Rs.${subtotal}`,
-    deliveryLine,
+    `Delivery: Rs.${deliveryCharge}`,
     `Total: Rs.${total}`,
     ``,
     `Name:`,
     `Delivery Address:`,
+    MESSAGE_FOOTER,
   ].join("\n");
 }
 
 /**
- * Single-item quick-order message (FR-WHATSAPP-002).
- * Used by the "Order on WhatsApp" button on each ProductCard (skips the cart).
+ * Single-item quick-order message.
+ * Used by the "Order on WhatsApp" button on each ProductCard.
  */
 export function buildQuickOrderMessage(
   itemName: string,
@@ -59,20 +58,25 @@ export function buildQuickOrderMessage(
   selectedVariant?: string
 ): string {
   const variantNote = selectedVariant ? ` (${selectedVariant})` : "";
+  const priceNote = price > 0 ? ` - Rs.${price}` : ``;
   return [
     `Hi ${SHOP_NAME}! I'd like to order:`,
-    `1x ${itemName}${variantNote} - Rs.${price}`,
+    `1x ${itemName}${variantNote}${priceNote}`,
     ``,
     `Name:`,
     `Delivery Address:`,
+    MESSAGE_FOOTER,
   ].join("\n");
 }
 
 /**
- * Default greeting for the floating WhatsApp button (FR-WHATSAPP-001).
+ * Default greeting for the floating WhatsApp button.
  */
 export function buildGreetingLink(): string {
-  const message = `Hi ${SHOP_NAME}! I'd like to know more about your menu.`;
+  const message = [
+    `Hi ${SHOP_NAME}! I'd like to know more about your menu.`,
+    MESSAGE_FOOTER,
+  ].join("\n");
   return buildWhatsAppLink(message);
 }
 

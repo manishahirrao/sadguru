@@ -1,7 +1,7 @@
 {
   "name": "Shree Sadguru Chai & Nasta Center",
-  "short_name": "Sadguru Chai",
-  "description": "Order chai, poha, misal pav & more on WhatsApp. Ambegaon Budruk, Pune.",
+  "short_name": "Sadguru Cafe",
+  "description": "Order chai, nasta & more on WhatsApp. Delivery 10PM–4AM.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#241712",

@@ -10,6 +10,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   all: "All",
   nasta: "Nasta",
   beverages: "Chai & Beverages",
+  addon: "Add-ons",
   other: "Other",
 };
 
