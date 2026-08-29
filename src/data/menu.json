@@ -24,8 +24,7 @@
     "orderable": true,
     "deliveryEligible": true,
     "variants": [
-      { "label": "Plain", "priceDelta": 0 },
-      { "label": "Masala", "priceDelta": 10 },
+      { "label": "Masala", "priceDelta": 0 },
       { "label": "Cheese", "priceDelta": 20 }
     ]
   },
@@ -56,23 +55,57 @@
     "variants": []
   },
   {
-    "id": "momos",
-    "name": "Momos",
+    "id": "momos-kurkure",
+    "name": "Kurkure Momos",
     "category": "nasta",
-    "price": 80,
+    "price": 110,
     "veg": true,
-    "image": "/images/momos.avif",
-    "description": "Dumplings served with spicy red chutney — choose your type and style",
+    "image": "/images/kurkure.jpeg",
+    "description": "Crispy kurkure momos served with spicy red chutney",
     "available": true,
     "orderable": true,
     "deliveryEligible": true,
     "variants": [
-      { "label": "Veg Steam", "priceDelta": 0 },
-      { "label": "Veg Fried", "priceDelta": 10 },
-      { "label": "Paneer Steam", "priceDelta": 20 },
-      { "label": "Paneer Fried", "priceDelta": 30 },
-      { "label": "Chicken Steam", "priceDelta": 20 },
-      { "label": "Chicken Fried", "priceDelta": 30 }
+      { "label": "Veg", "priceDelta": 0 },
+      { "label": "Paneer", "priceDelta": 10 },
+      { "label": "Chicken", "priceDelta": 0 },
+      { "label": "Corn Cheese", "priceDelta": 10 }
+    ]
+  },
+  {
+    "id": "momos-steam",
+    "name": "Steam Momos",
+    "category": "nasta",
+    "price": 70,
+    "veg": true,
+    "image": "/images/steam.webp",
+    "description": "Soft steamed momos served with spicy red chutney",
+    "available": true,
+    "orderable": true,
+    "deliveryEligible": true,
+    "variants": [
+      { "label": "Veg", "priceDelta": 0 },
+      { "label": "Paneer", "priceDelta": 10 },
+      { "label": "Chicken", "priceDelta": 10 },
+      { "label": "Corn Cheese", "priceDelta": 20 }
+    ]
+  },
+  {
+    "id": "momos-fried",
+    "name": "Fried Momos",
+    "category": "nasta",
+    "price": 80,
+    "veg": true,
+    "image": "/images/fried.jpg",
+    "description": "Golden fried momos served with spicy red chutney",
+    "available": true,
+    "orderable": true,
+    "deliveryEligible": true,
+    "variants": [
+      { "label": "Veg", "priceDelta": 0 },
+      { "label": "Paneer", "priceDelta": 10 },
+      { "label": "Chicken", "priceDelta": 10 },
+      { "label": "Corn Cheese", "priceDelta": 20 }
     ]
   },
   {
