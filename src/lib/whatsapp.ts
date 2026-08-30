@@ -11,7 +11,7 @@ const MESSAGE_FOOTER = [
   ``,
   `---`,
   `Online Delivery Hours: 10:00 PM - 4:00 AM only`,
-  `We also have Cigarettes available - mention brand if needed!`,
+  `We also have Cigarettes & Pharmacy items (Condoms etc.) available - mention if needed!`,
 ].join("\n");
 
 /** Builds the deep link URL for a given pre-composed message text. */
