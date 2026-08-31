@@ -3,7 +3,7 @@
     "id": "poha",
     "name": "Poha",
     "category": "nasta",
-    "price": 40,
+    "price": 30,
     "veg": true,
     "image": "/images/poha.jpg",
     "description": "Light, fluffy flattened rice with mustard seeds, turmeric, onion & fresh coriander",
@@ -24,8 +24,9 @@
     "orderable": true,
     "deliveryEligible": true,
     "variants": [
-      { "label": "Masala", "priceDelta": 0 },
-      { "label": "Cheese", "priceDelta": 20 }
+      { "label": "Plain", "priceDelta": 0 },
+      { "label": "Masala", "priceDelta": 10 },
+      { "label": "Cheese", "priceDelta": 30 }
     ]
   },
   {
@@ -125,7 +126,7 @@
     "id": "chai",
     "name": "Special Gulacha Chaha",
     "category": "beverages",
-    "price": 20,
+    "price": 15,
     "veg": true,
     "image": "/images/chai.jpg",
     "description": "Our special jaggery tea — rich, aromatic and made the traditional way",
@@ -219,7 +220,7 @@
     "id": "cream-roll",
     "name": "Cream Roll",
     "category": "addon",
-    "price": 20,
+    "price": 15,
     "veg": true,
     "image": "/images/cream-roll.jpg",
     "description": "Flaky pastry roll filled with fresh cream",
